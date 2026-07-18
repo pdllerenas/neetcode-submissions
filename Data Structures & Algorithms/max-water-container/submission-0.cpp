@@ -1,0 +1,20 @@
+class Solution {
+ public:
+  int maxArea(vector<int>& heights) {
+    int n = heights.size();
+    int l = 0, r = n - 1;
+    int best_area = 0;
+    while (l < r) {
+      int area = (r - l) * min(heights[l], heights[r]);
+      if (area > best_area) {
+        best_area = area;
+      }
+      if (heights[l] < heights[r]) {
+        l++;
+      } else {
+        r--;
+      }
+    }
+    return best_area;
+  }
+};
